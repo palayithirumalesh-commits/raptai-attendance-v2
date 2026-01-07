@@ -9,7 +9,7 @@ interface HeaderProps {
 
 export function Header({ title, subtitle }: HeaderProps) {
   const handleNotificationClick = () => {
-    toast.info('Notifications:\n• Node nvidia-pod2 reached 90% capacity\n• Job completed for user anil\n• System update available');
+    toast.info('Notifications:\n• Node nvidia-pod2 t reached 90% capacity\n• Job completed for user anil\n• System update available');
   };
 
   return (
