@@ -1,0 +1,288 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Facial Attendance System Design System */
+
+@layer base {
+  :root {
+    --background: 0 0% 98%;
+    --foreground: 222 47% 11%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 222 47% 11%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 222 47% 11%;
+
+    --primary: 234 89% 58%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 220 14% 96%;
+    --secondary-foreground: 222 47% 11%;
+
+    --muted: 220 14% 96%;
+    --muted-foreground: 220 9% 46%;
+
+    --accent: 158 64% 52%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 220 13% 91%;
+    --input: 220 13% 91%;
+    --ring: 234 89% 58%;
+
+    --radius: 0.5rem;
+
+    /* Custom Attendance Colors */
+    --sidebar: 234 89% 58%;
+    --sidebar-foreground: 0 0% 100%;
+    --success: 142 76% 36%;
+    --success-foreground: 0 0% 100%;
+    --warning: 38 92% 50%;
+    --warning-foreground: 0 0% 100%;
+    --info: 217 91% 60%;
+    --late: 38 92% 50%;
+    --absent: 0 84% 60%;
+    --present: 158 64% 42%;
+  }
+
+  .dark {
+    --background: 222 47% 6%;
+    --foreground: 214 32% 91%;
+    --card: 230 37% 14%;
+    --card-foreground: 214 32% 91%;
+    --popover: 230 37% 14%;
+    --popover-foreground: 214 32% 91%;
+    --primary: 234 89% 74%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 217 33% 17%;
+    --secondary-foreground: 214 32% 91%;
+    --muted: 217 33% 17%;
+    --muted-foreground: 215 19% 60%;
+    --accent: 160 84% 39%;
+    --accent-foreground: 0 0% 100%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 0 0% 100% / 0.1;
+    --input: 0 0% 100% / 0.1;
+    --ring: 234 89% 74%;
+    --sidebar: 230 40% 12%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  }
+}
+
+@layer components {
+  /* Login Styles */
+  .login-gradient {
+    background: linear-gradient(135deg, hsl(234 89% 58%) 0%, hsl(234 89% 45%) 100%);
+  }
+
+  /* Sidebar */
+  .attendance-sidebar {
+    background: hsl(var(--background));
+    border-right: 1px solid hsl(var(--border));
+  }
+
+  /* Nav Item Active */
+  .nav-active {
+    background: hsl(var(--primary));
+    color: hsl(var(--primary-foreground));
+    border-radius: 8px;
+  }
+
+  /* Card Styles */
+  .metric-card {
+    background: hsl(var(--card));
+    border: 1px solid hsl(var(--border));
+    border-radius: 12px;
+    padding: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .metric-icon {
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+  }
+
+  .metric-icon-success {
+    background: hsl(var(--present));
+  }
+
+  .metric-icon-warning {
+    background: hsl(var(--warning));
+  }
+
+  .metric-icon-danger {
+    background: hsl(var(--destructive));
+  }
+
+  .metric-icon-info {
+    background: hsl(var(--info));
+  }
+
+  /* Status Badges */
+  .status-badge {
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 500;
+  }
+
+  .status-present {
+    background: hsl(var(--present));
+    color: white;
+  }
+
+  .status-late {
+    background: hsl(var(--warning));
+    color: white;
+  }
+
+  .status-absent {
+    background: hsl(var(--destructive));
+    color: white;
+  }
+
+  /* Form Styles */
+  .form-input {
+    background: hsl(var(--card));
+    border: 1px solid hsl(var(--border));
+    border-radius: 8px;
+    padding: 12px 16px;
+    width: 100%;
+    transition: all 0.2s ease;
+  }
+
+  .form-input:focus {
+    border-color: hsl(var(--primary));
+    outline: none;
+    box-shadow: 0 0 0 3px hsl(var(--primary) / 0.1);
+  }
+
+  .form-input::placeholder {
+    color: hsl(var(--muted-foreground));
+  }
+
+  /* Camera Preview */
+  .camera-preview {
+    border: 2px dashed hsl(var(--border));
+    border-radius: 12px;
+    min-height: 300px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: hsl(var(--secondary));
+  }
+
+  /* Tip Box */
+  .tip-box {
+    background: hsl(38 92% 50% / 0.1);
+    border: 1px solid hsl(var(--warning));
+    border-radius: 8px;
+    padding: 12px 16px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: hsl(var(--warning));
+    font-size: 14px;
+  }
+
+  /* Camera Config Card */
+  .camera-config {
+    border: 1px solid hsl(var(--border));
+    border-radius: 12px;
+    padding: 1.5rem;
+    background: hsl(var(--card));
+  }
+
+  /* Profile Avatar */
+  .profile-avatar {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    background: hsl(var(--primary));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 48px;
+    font-weight: 600;
+  }
+
+  /* Role Selector */
+  .role-option {
+    border: 2px solid hsl(var(--border));
+    border-radius: 12px;
+    padding: 1rem;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+
+  .role-option:hover {
+    border-color: hsl(var(--primary) / 0.5);
+  }
+
+  .role-option.selected {
+    border-color: hsl(var(--primary));
+    background: hsl(var(--primary) / 0.05);
+  }
+
+  /* Table Styles */
+  .attendance-table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+
+  .attendance-table th {
+    text-align: left;
+    padding: 12px 16px;
+    color: hsl(var(--muted-foreground));
+    font-weight: 500;
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    border-bottom: 1px solid hsl(var(--border));
+  }
+
+  .attendance-table td {
+    padding: 16px;
+    border-bottom: 1px solid hsl(var(--border));
+  }
+
+  .attendance-table tr:hover {
+    background: hsl(var(--muted) / 0.5);
+  }
+}
+
+@layer utilities {
+  .time-green {
+    color: hsl(var(--present));
+    font-weight: 500;
+  }
+
+  .time-red {
+    color: hsl(var(--destructive));
+    font-weight: 500;
+  }
+}
